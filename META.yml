@@ -24,4 +24,4 @@ requires:
   SDBM_File: 0
   Sort::Versions: 0
   perl: 5.6.0
-version: 0.01_01
+version: 0.01_02
