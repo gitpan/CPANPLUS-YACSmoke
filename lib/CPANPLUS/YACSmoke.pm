@@ -31,7 +31,7 @@ our %EXPORT_TAGS = (
   'default'  => [ qw( mark test excluded ) ],
 );
 
-$VERSION = '0.01_02';
+$VERSION = '0.01_03';
 
 {
   my %Checked;
@@ -59,6 +59,7 @@ sub new {
 
   $ENV{AUTOMATED_TESTING} = 1;
   $ENV{PERL_MM_USE_DEFAULT} = 1; # despite verbose setting
+  $ENV{PERL5_CPANPLUS_VERBOSE} = 1; # set verbosity of CPANPLUS
 
   my $conf = CPANPLUS::Configure->new();
 
@@ -66,6 +67,8 @@ sub new {
   $conf->set_conf( prereqs => 2 ); # force to ask callback
   $conf->set_conf( skiptest => 0 ); 
   $conf->set_conf( dist_type => 'CPANPLUS::Dist::YACSmoke' ); # this is where the magic happens.
+  $conf->set_conf( cpantest => 1 ); # Yes, we want to report test results.
+  $conf->set_conf( verbose => 1 ); # set verbosity to true.
 
   my $cb   = CPANPLUS::Backend->new($conf);
 

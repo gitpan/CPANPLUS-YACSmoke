@@ -17,7 +17,7 @@ use Config::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.01_02';
+$VERSION = '0.01_03';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';

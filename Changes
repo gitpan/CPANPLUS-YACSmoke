@@ -1,8 +1,15 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.01_03	
+
+	- Actually explicitly listed YAML::Tiny and Test::Reporter as dependencies.
+	- Switch some more CPANPLUS configuration settings on by default.
+
 0.01_02	Thu Jul 17 21:20:50 BST 2008
-	Fixed the munging of the test report for NA reports.
+
+	- Fixed the munging of the test report for NA reports.
 
 0.01_01	Thu Jul 17 00:49:33 BST 2008
-	Initial CPAN development release
+
+	- Initial CPAN development release

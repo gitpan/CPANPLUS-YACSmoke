@@ -5,11 +5,11 @@ author:
 build_requires:
   Test::More: 0.47
 distribution_type: module
-generated_by: 'Module::Install version 0.75'
+generated_by: 'Module::Install version 0.76'
 license: perl
 meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.3.html
-  version: 1.3
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
 name: CPANPLUS-YACSmoke
 no_index:
   directory:
@@ -23,5 +23,9 @@ requires:
   Regexp::Assemble: 0.34
   SDBM_File: 0
   Sort::Versions: 0
+  Test::Reporter: 1.4002
+  YAML::Tiny: 0
   perl: 5.6.0
-version: 0.01_02
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.01_03
