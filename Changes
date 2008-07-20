@@ -1,6 +1,9 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.02	Sun Jul 20 22:34:07 BST 2008
+	- first stable release
+
 0.01_03	
 
 	- Actually explicitly listed YAML::Tiny and Test::Reporter as dependencies.
