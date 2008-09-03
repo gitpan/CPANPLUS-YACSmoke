@@ -1,6 +1,11 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.04	Wed Sep  3 17:16:18 BST 2008
+	- Added filtering for the edge case where CPANPLUS generates
+	  a Makefile.PL if there is only a Build.PL. If the grade isn't
+	  a pass we bin the test report.
+
 0.02	Sun Jul 20 22:34:07 BST 2008
 	- first stable release
 

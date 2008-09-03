@@ -17,7 +17,7 @@ use Config::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.02';
+$VERSION = '0.04';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -30,6 +30,7 @@ $ENV{PERL_MM_USE_DEFAULT} = 1; # despite verbose setting
 my %Checked;
 my $TiedObj;
 my $exclude_dists;
+my %throw_away;
 
   sub _is_excluded_dist {
     return unless $exclude_dists;
@@ -73,6 +74,9 @@ my $exclude_dists;
 		     my $stage   = TEST_FAIL_STAGE->($buffer);
 		     $report    .= REPORT_MESSAGE_HEADER->( $int_ver, $author );
 		     $report    .= REPORT_MESSAGE_FAIL_HEADER->( $stage, $buffer );
+		  }
+		  if ( $grade ne GRADE_PASS and $report =~ /No \'Makefile.PL\' found - attempting to generate one/s ) {
+			$throw_away{ $mod->package_name . '-' . $mod->package_version } = 'toss';
 		  }
 		  $report =~ s/\[MSG\].*may need to build a \'CPANPLUS::Dist::YACSmoke\' package for it as well.*?\n//sg;
 		  $report .=
@@ -128,7 +132,10 @@ my $exclude_dists;
 		my $grade = lc shift;
 		my $package = $mod->package_name .'-'. $mod->package_version;
 		my $checked = $Checked{$package};
-
+		
+		# Did we want to throw away this repoort?
+		my $throw = delete $throw_away{ $package };
+		return if $throw;
 
           # Simplified algorithm for reporting: 
           # * don't send a report if
