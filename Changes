@@ -1,6 +1,11 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.06	Tue Sep  9 13:55:05 BST 2008
+	- CP::D::YS - added check for the version of CPANPLUS we are
+	  running under. Skip manglement if greater than equal to 0.85_04
+	  where the things we are mangling are fixed.
+
 0.04	Wed Sep  3 17:16:18 BST 2008
 	- Added filtering for the edge case where CPANPLUS generates
 	  a Makefile.PL if there is only a Build.PL. If the grade isn't

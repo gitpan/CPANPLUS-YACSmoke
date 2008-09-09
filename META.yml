@@ -26,6 +26,7 @@ requires:
   Test::Reporter: 1.4002
   YAML::Tiny: 0
   perl: 5.6.0
+  version: 0.73
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.04
+version: 0.06

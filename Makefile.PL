@@ -10,6 +10,7 @@ perl_version '5.006';
 build_requires 'Test::More' => 0.47;
 requires 'YAML::Tiny' => 0;
 requires 'Test::Reporter' => 1.4002;
+requires 'version'  => '0.73';
 requires 'CPANPLUS' => 0.84;
 requires 'Module::Load::Conditional' => 0;
 requires 'SDBM_File' => 0;
