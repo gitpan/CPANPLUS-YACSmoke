@@ -1,6 +1,11 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.08	Mon Sep 15 08:07:46 BST 2008
+	- set CPANPLUS conf prefer_makefile to 0 if perl version greater
+	  than 5.9.5, which means we have both Module::Build and 
+	  CPANPLUS::Dist::Build.
+
 0.06	Tue Sep  9 13:55:05 BST 2008
 	- CP::D::YS - added check for the version of CPANPLUS we are
 	  running under. Skip manglement if greater than equal to 0.85_04

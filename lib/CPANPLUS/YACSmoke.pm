@@ -31,7 +31,7 @@ our %EXPORT_TAGS = (
   'default'  => [ qw( mark test excluded ) ],
 );
 
-$VERSION = '0.06';
+$VERSION = '0.08';
 
 {
   my %Checked;
@@ -69,6 +69,7 @@ sub new {
   $conf->set_conf( dist_type => 'CPANPLUS::Dist::YACSmoke' ); # this is where the magic happens.
   $conf->set_conf( cpantest => 1 ); # Yes, we want to report test results.
   $conf->set_conf( verbose => 1 ); # set verbosity to true.
+  $conf->set_conf( prefer_makefile => 0 ) if $^V gt v5.9.5; # Prefer Build.PL if we have M::B
 
   my $cb   = CPANPLUS::Backend->new($conf);
 
