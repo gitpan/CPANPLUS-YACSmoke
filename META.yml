@@ -17,8 +17,10 @@ no_index:
     - t
 requires:
   CPANPLUS: 0.84
+  CPANPLUS::Dist::Build: 0.05
   Config::IniFiles: 2.38
   File::Spec: 0
+  Module::Build: 0.2808
   Module::Load::Conditional: 0
   Regexp::Assemble: 0.34
   SDBM_File: 0
@@ -29,4 +31,4 @@ requires:
   version: 0.73
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.08
+version: 0.10

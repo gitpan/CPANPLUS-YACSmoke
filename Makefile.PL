@@ -18,4 +18,9 @@ requires 'File::Spec' => 0;
 requires 'Regexp::Assemble' => 0.34;
 requires 'Config::IniFiles' => 2.38;
 requires 'Sort::Versions' => 0;
+eval "require Module::Build";
+unless ($@) {
+   requires 'Module::Build' => 0.2808;
+   requires 'CPANPLUS::Dist::Build' => 0.05;
+}
 WriteAll();

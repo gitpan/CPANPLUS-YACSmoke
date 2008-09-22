@@ -1,6 +1,13 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.10	Mon Sep 22 07:22:51 BST 2008
+	- Test for M::B during Makefile.PL install updated version
+	  and make sure that CPANPLUS::Dist::Build is installed as
+	  well ( RT #39477 ).
+	- Check if M::B is installed. set prefer_makefile to 0 if it
+	  is.
+
 0.08	Mon Sep 15 08:07:46 BST 2008
 	- set CPANPLUS conf prefer_makefile to 0 if perl version greater
 	  than 5.9.5, which means we have both Module::Build and 
