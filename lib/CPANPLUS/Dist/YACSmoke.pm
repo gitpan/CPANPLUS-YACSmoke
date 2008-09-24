@@ -18,7 +18,7 @@ use Config::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.10';
+$VERSION = '0.12';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -43,6 +43,15 @@ my %throw_away;
     my $self = shift;
     my $mod  = $self->parent;
     my $cb   = $mod->parent;
+
+    my $conf = $cb->configure_object;
+
+    if ( $conf->get_conf( 'prefer_makefile' ) ) {
+        msg(qq{CPANPLUS is prefering Makefile.PL});
+    }
+    else {
+        msg(qq{CPANPLUS is prefering Build.PL});
+    }
 
     return 1 if $TiedObj;
 

@@ -1,6 +1,10 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.12	Wed Sep 24 09:40:03 BST 2008
+	- Change to Dist::YACSmoke to add a message whether CPANPLUS is
+	  preferring Makefile.PL or Build.PL
+
 0.10	Mon Sep 22 07:22:51 BST 2008
 	- Test for M::B during Makefile.PL install updated version
 	  and make sure that CPANPLUS::Dist::Build is installed as

@@ -31,7 +31,7 @@ our %EXPORT_TAGS = (
   'default'  => [ qw( mark test excluded ) ],
 );
 
-$VERSION = '0.10';
+$VERSION = '0.12';
 
 {
   my %Checked;
