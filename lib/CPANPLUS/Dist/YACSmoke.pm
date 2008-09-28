@@ -18,7 +18,7 @@ use Config::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.12';
+$VERSION = '0.14';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -79,6 +79,10 @@ my %throw_away;
 		  my $grade  = shift;
 		  my $safe_ver = version->new('0.85_04');
 		  SWITCH: {
+		    if ( $grade ne GRADE_PASS and $report =~ /Will not install prerequisite /s ) {
+			$throw_away{ $mod->package_name . '-' . $mod->package_version } = 'toss';
+			last SWITCH;
+		    }
 		    my $int_ver = $CPANPLUS::Internals::VERSION;
 		    last SWITCH if version->new($int_ver) >= $safe_ver;
 		    if ( $grade eq GRADE_NA ) {
@@ -147,7 +151,7 @@ my %throw_away;
 		my $package = $mod->package_name .'-'. $mod->package_version;
 		my $checked = $Checked{$package};
 		
-		# Did we want to throw away this repoort?
+		# Did we want to throw away this report?
 		my $throw = delete $throw_away{ $package };
 		return if $throw;
 

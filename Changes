@@ -1,6 +1,11 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.14	Sun Sep 28 19:49:06 BST 2008
+	- Dist::YACSmoke filter for cases where we didn't install
+	  a prereq for whatever reason. Guarantee that the report
+	  gets discarded if it isn't graded as PASS.
+
 0.12	Wed Sep 24 09:40:03 BST 2008
 	- Change to Dist::YACSmoke to add a message whether CPANPLUS is
 	  preferring Makefile.PL or Build.PL
