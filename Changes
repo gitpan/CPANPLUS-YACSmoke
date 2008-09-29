@@ -1,6 +1,10 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.16	Mon Sep 29 17:02:21 BST 2008
+	- Updated the RECENT file filtering to use Dave Golden's
+	  shiny improved regex for file extensions.
+
 0.14	Sun Sep 28 19:49:06 BST 2008
 	- Dist::YACSmoke filter for cases where we didn't install
 	  a prereq for whatever reason. Guarantee that the report

@@ -31,7 +31,7 @@ our %EXPORT_TAGS = (
   'default'  => [ qw( mark test excluded ) ],
 );
 
-$VERSION = '0.14';
+$VERSION = '0.16';
 
 {
   my %Checked;
@@ -353,7 +353,7 @@ sub _download_list {
     or croak("Cannot access local RECENT file [$local]: $!\n");
   while (<$fh>) {
     next    unless(/^authors/);
-    next    unless(/\.(tar\.gz|tgz|tar\.bz2|zip)\n$/);
+    next    unless(/\.(?:tar\.(?:bz2|gz|Z)|t(?:gz|bz)|(?<!ppm\.)zip|pm.gz)\n$/i);
     s!authors/id/!!;
     chomp;
     push @testlist, $_;
