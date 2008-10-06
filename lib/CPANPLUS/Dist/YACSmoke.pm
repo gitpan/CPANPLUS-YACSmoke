@@ -18,7 +18,7 @@ use Config::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.16';
+$VERSION = '0.18';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -224,7 +224,7 @@ sub _env_report {
 
     my $report = "";
     for my $var ( sort @vars_found ) {
-        $report .= "    $var = $ENV{$var}\n";
+        $report .= "    $var = $ENV{$var}\n" if defined $ENV{$var};
     }
     return $report;
 }

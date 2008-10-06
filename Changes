@@ -1,6 +1,9 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.18	Mon Oct  6 22:46:55 BST 2008
+	- Hopefully fixed the undefined %ENV value warnings.
+
 0.16	Mon Sep 29 17:02:21 BST 2008
 	- Updated the RECENT file filtering to use Dave Golden's
 	  shiny improved regex for file extensions.
