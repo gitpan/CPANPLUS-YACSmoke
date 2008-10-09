@@ -20,7 +20,7 @@ requires 'Config::IniFiles' => 2.38;
 requires 'Sort::Versions' => 0;
 eval "require Module::Build";
 unless ($@) {
-   requires 'Module::Build' => 0.2808;
+   requires 'Module::Build' => 0.30;
    requires 'CPANPLUS::Dist::Build' => 0.05;
 }
 WriteAll();
