@@ -34,7 +34,7 @@ our %EXPORT_TAGS = (
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT    = ( @{ $EXPORT_TAGS{'default'} } );
 
-$VERSION = '0.20';
+$VERSION = '0.22';
 
 {
   my %Checked;
@@ -72,6 +72,11 @@ sub new {
   $conf->set_conf( dist_type => 'CPANPLUS::Dist::YACSmoke' ); # this is where the magic happens.
   $conf->set_conf( cpantest => 1 ); # Yes, we want to report test results.
   $conf->set_conf( verbose => 1 ); # set verbosity to true.
+
+  unless ( defined $ENV{MAILDOMAIN} ) {
+     my $hostpart = ( split /\@/, ( $conf->get_conf( 'email' ) || 'smoker@cpantesters.org' ) )[1];
+     $ENV{MAILDOMAIN} = $hostpart eq 'cpan.org' ? 'cpantesters.org' : $hostpart;
+  }
 
   if ( $^V gt v5.9.5 ) {
      $conf->set_conf( prefer_makefile => 0 ); # Prefer Build.PL if we have M::B
@@ -525,6 +530,33 @@ The object interface is created normally through the test() or mark() functions 
 
 =back 
 
+=head1 ENVIRONMENT VARIABLES
+
+Several environment variables get set by the module:
+
+=over
+
+=item C<AUTOMATED_TESTING>
+
+Set to 1 to indicate that we are currently running in an automated testing environment
+
+=item C<PERL_MM_USE_DEFAULT>
+
+Set to 1 MakeMaker and Module::Build's prompt functions will always return the default 
+without waiting for user input.
+
+=item C<PERL5_CPANPLUS_VERBOSE>
+
+Set to 1 so L<CPANPLUS> will run in C<verbose> mode.
+
+=item C<MAILDOMAIN>
+
+L<Test::Reporter> uses this. YACSmoke will set this if it isn't already set. It will try to determine
+the domain from the C<email> setting in L<CPANPLUS>. If this is C<cpan.org> it will default to 
+C<cpantesters.org> ( the perl.org MX doesn't like people trying to impersonate it, for obvious reasons ).
+
+=back
+
 =head1 AUTHOR
 
 Chris C<BinGOs> Williams <chris@bingosnet.co.uk>
@@ -546,5 +578,7 @@ L<CPANPLUS>
 L<CPANPLUS::Dist::YACSmoke>
 
 L<CPAN::YACSmoke>
+
+L<Test::Reporter>
 
 =cut

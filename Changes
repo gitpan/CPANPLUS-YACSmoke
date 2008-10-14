@@ -1,6 +1,10 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.22	Tue Oct 14 21:54:19 BST 2008
+	- Added setting MAILDOMAIN env var if it isn't already defined.
+	  This should make sending test reports that little bit faster.
+
 0.20	Thu Oct  9 21:01:24 BST 2008
 	- Fixed the exported functions, reported by SHLOMIF 
 	- Changed the M::B requirement to 0.30

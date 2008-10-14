@@ -124,6 +124,35 @@ PROCEDURAL INTERFACE
         that CPANPLUS is installed on. In this case not all OSs support the
         full range of return values from the stat function.
 
+OBJECT INTERFACE
+    Each of the procedural interface functions are available as methods of a
+    CPANPLUS::YACSmoke object.
+
+    "new"
+        The object interface is created normally through the test() or
+        mark() functions of the procedural interface.
+
+ENVIRONMENT VARIABLES
+    Several environment variables get set by the module:
+
+    "AUTOMATED_TESTING"
+        Set to 1 to indicate that we are currently running in an automated
+        testing environment
+
+    "PERL_MM_USE_DEFAULT"
+        Set to 1 MakeMaker and Module::Build's prompt functions will always
+        return the default without waiting for user input.
+
+    "PERL5_CPANPLUS_VERBOSE"
+        Set to 1 so CPANPLUS will run in "verbose" mode.
+
+    "MAILDOMAIN"
+        Test::Reporter uses this. YACSmoke will set this if it isn't already
+        set. It will try to determine the domain from the "email" setting in
+        CPANPLUS. If this is "cpan.org" it will default to "cpantesters.org"
+        ( the perl.org MX doesn't like people trying to impersonate it, for
+        obvious reasons ).
+
 AUTHOR
     Chris "BinGOs" Williams <chris@bingosnet.co.uk>
 
@@ -145,4 +174,6 @@ SEE ALSO
     CPANPLUS::Dist::YACSmoke
 
     CPAN::YACSmoke
+
+    Test::Reporter
 
