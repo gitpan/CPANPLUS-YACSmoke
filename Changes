@@ -1,6 +1,11 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.24	Wed Nov  5 09:32:09 GMT 2008
+	- we now set conf_cpantest to 'dont_cc' so we don't CC the author
+	  or do those checks with http://testers.cpan.org/
+	- Added detection of PERL5_MINIYACSMOKER env var
+
 0.22	Tue Oct 14 21:54:19 BST 2008
 	- Added setting MAILDOMAIN env var if it isn't already defined.
 	  This should make sending test reports that little bit faster.
