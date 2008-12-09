@@ -1,6 +1,12 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.26	Tue Dec  9 06:10:09 GMT 2008
+	- Logic in install_prereq callback slightly out. If the
+	  prereq is marked as 'aborted' we really should not give up
+	  out of hand, but try it again until we get a FAIL or NA.
+	  Otherwise aborted prereqs will never get retried. etc.
+
 0.24	Wed Nov  5 09:32:09 GMT 2008
 	- we now set conf_cpantest to 'dont_cc' so we don't CC the author
 	  or do those checks with http://testers.cpan.org/

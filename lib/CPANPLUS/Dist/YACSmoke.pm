@@ -18,7 +18,7 @@ use Config::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.24';
+$VERSION = '0.26';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -131,7 +131,8 @@ my %throw_away;
 
 		  my $checked = $Checked{$package};
 		  if (defined $checked &&
-			  $checked =~ /aborted|fail|na/ ) {
+			  #$checked =~ /aborted|fail|na/ ) {
+			  $checked =~ /fail|na/ ) {
 
 			  msg("Known uninstallable prereqs $package - aborting install\n");
 			  $Checked{$root} = "aborted";
