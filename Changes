@@ -1,6 +1,12 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.27_01	Mon Dec 15 16:10:41 GMT 2008
+	- Implemented 'build_dir_reuse' type functionality into
+	  Dist::YACSmoke. It will 'trust' the build dir if it has
+	  seen a successful prepare/create and stash some meta
+	  data in the build dir in a .yacsmoke.yml file. 
+
 0.26	Tue Dec  9 06:10:09 GMT 2008
 	- Logic in install_prereq callback slightly out. If the
 	  prereq is marked as 'aborted' we really should not give up

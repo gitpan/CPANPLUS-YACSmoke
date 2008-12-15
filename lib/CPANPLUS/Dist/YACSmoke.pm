@@ -7,6 +7,7 @@ use base qw(CPANPLUS::Dist::Base);
 
 use Carp;
 use CPANPLUS::Internals::Utils;
+use CPANPLUS::Internals::Constants;
 use CPANPLUS::Internals::Constants::Report;
 use CPANPLUS::Error;
 use POSIX qw( O_CREAT O_RDWR );         # for SDBM_File
@@ -15,10 +16,11 @@ use SDBM_File;
 use File::Spec::Functions;
 use Regexp::Assemble;
 use Config::IniFiles;
+use YAML::Tiny;
 
 use vars qw($VERSION);
 
-$VERSION = '0.26';
+$VERSION = '0.27_01';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -43,6 +45,8 @@ my %throw_away;
     my $self = shift;
     my $mod  = $self->parent;
     my $cb   = $mod->parent;
+
+    $self->status->mk_accessors(qw(_prepare _create _prereqs _skipbuild));
 
     my $conf = $cb->configure_object;
 
@@ -184,9 +188,70 @@ my %throw_away;
     return 1;
   }
 
+  sub prepare {
+    # Okay, we are plugged in below CP::D::MM or CP::D::Build
+    # We'll have to do some magic here
+    my $self = shift; # us
+    my $dist = $self->parent; # them
+    my $dist_cpan = $dist->status->dist_cpan;
+
+    my $dir;
+    unless( $dir = $dist->status->extract ) {
+        error( loc( "No dir found to operate on!" ) );
+        return;
+    }
+
+    my $status;
+    if ( -e catfile( $dir, '.yacsmoke.yml' ) ) {
+	my @stuff = YAML::Tiny::LoadFile( catfile( $dir, '.yacsmoke.yml' ) );
+	my $data = shift @stuff;
+	$self->status->_prepare( $data->{_prepare} );
+	$self->status->_prereqs( $data->{_prereqs} );
+	$self->status->_create( $data->{_create} );
+	# Load shit
+	$dist_cpan->status->$_( $data->{_prepare}->{$_} ) for keys %{ $data->{_prepare} };
+	$self->status->_skipbuild(1);
+    	my $package = $dist->package_name .'-'. $dist->package_version;
+        msg(qq{Found previous build for "$package", trusting that});
+	$status = 1;
+    }
+    else {
+        $status = $self->SUPER::prepare( @_ );
+	my %stat;
+	my $install_type = $dist->status->installer_type;
+	if ( $install_type eq 'CPANPLUS::Dist::Build' ) {
+	   %stat = map { $_ => $dist_cpan->status->$_ }
+	           grep { /^(_prepare_args|_buildflags|_distdir|prepared|prereqs)$/ } $dist_cpan->status->ls_accessors;
+	}
+	else {
+	   %stat = map { $_ => $dist_cpan->status->$_ } 
+		   grep { /^(_prepare_args|makefile|prereqs|distdir|prepared)$/ } $dist_cpan->status->ls_accessors;
+	}
+        $self->status->_prepare( \%stat );
+	$self->status->_prereqs( $dist->status->prereqs ) if $dist->status->prereqs;
+    }
+    return $status;
+  }
+
   sub create {
     my $self = shift;
     my $mod  = $self->parent;
+    my $dist_cpan = $mod->status->dist_cpan;
+
+    if ( $self->status->_skipbuild ) {
+	my $create = $self->status->_create;
+	$dist_cpan->status->$_( $create->{$_} ) for keys %{ $create };
+	$dist_cpan->_resolve_prereqs(
+                            format          => $create->{_create_args}->{prereq_format},
+                            verbose         => $create->{_create_args}->{verbose},
+                            prereqs         => $self->status->_prereqs,
+                            target          => $create->{_create_args}->{prereq_target},
+                            force           => $create->{_create_args}->{force},
+                            prereq_build    => $create->{_create_args}->{prereq_build},
+                    );
+	$mod->add_to_includepath();
+	return 1;
+    }
 
     my $package = $mod->package_name .'-'. $mod->package_version;
     msg(qq{Checking for previous PASS result for "$package"});
@@ -195,7 +260,27 @@ my %throw_away;
        msg(qq{Found previous PASS result for "$package" skipping tests.});
        push @_, skiptest => 1;
     } 
-    $self->SUPER::create( @_ );
+    my $dir = $mod->status->extract;
+    my $status = $self->SUPER::create( @_ );
+    if ( $status && ! -e catfile( $dir, '.yacsmoke.yml' ) ) {
+	my %stat;
+	my $install_type = $mod->status->installer_type;
+	if ( $install_type eq 'CPANPLUS::Dist::Build' ) {
+	   %stat = map { $_ => $dist_cpan->status->$_ }
+	           grep { /^(created|_create_args|_buildflags|build|test)$/ } $dist_cpan->status->ls_accessors;
+	}
+	else {
+	   %stat = map { $_ => $dist_cpan->status->$_ } 
+		   grep { /^(created|_create_args|make|test)$/ } $dist_cpan->status->ls_accessors;
+	}
+	$self->status->_create( \%stat );
+	my $data = { };
+	$data->{_prepare} = $self->status->_prepare;
+	$data->{_prereqs} = $self->status->_prereqs;
+	$data->{_create} = $self->status->_create;
+	YAML::Tiny::DumpFile( catfile( $dir, '.yacsmoke.yml' ), $data );
+    }
+    return $status;
   }
 
 sub _env_report {
@@ -340,11 +425,22 @@ This method is called just after the new dist object is set up. It initialises t
 and loads the list of excluded distributions from the C<ini> file if that hasn't been loaded already. It also registers callbacks with 
 the L<CPANPLUS> backend.
 
+=item C<prepare>
+
+This runs the preparation step of your distribution. This step is meant to set up the environment so the create step can create the actual distribution(file).
+This can mean running either C<Makefile.PL> or C<Build.PL>.
+
+CPANPLUS::Dist::YACSmoke will check for the existence of a C<.yacsmoke.yml> in the extracted build directory. If it exists it will
+load the meta data that it contains and sets C<$dist->status->_skipbuild> to true.
+
 =item C<create>
 
 This runs the creation step of your distribution, by running C<make> and C<make test> for instance. The distribution is checked against
 the database to see if a C<pass> grade has already been reported for this distribution, if so then C<skiptest> is set and the testsuite 
 will not be run.
+
+If C<$dist->status->_skipbuild> is set to true, CPANPLUS::Dist::YACSmoke will skip the build and test stages completely and resolve
+any prereqs for the distribution before adding the build directories C<blib> structure to the include path.
 
 =back
 
