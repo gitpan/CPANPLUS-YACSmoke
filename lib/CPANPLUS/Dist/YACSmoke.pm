@@ -20,7 +20,7 @@ use YAML::Tiny;
 
 use vars qw($VERSION);
 
-$VERSION = '0.27_01';
+$VERSION = '0.28';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -431,7 +431,7 @@ This runs the preparation step of your distribution. This step is meant to set u
 This can mean running either C<Makefile.PL> or C<Build.PL>.
 
 CPANPLUS::Dist::YACSmoke will check for the existence of a C<.yacsmoke.yml> in the extracted build directory. If it exists it will
-load the meta data that it contains and sets C<$dist->status->_skipbuild> to true.
+load the meta data that it contains and sets C<$dist-E<gt>status-E<gt>_skipbuild> to true.
 
 =item C<create>
 
@@ -439,7 +439,7 @@ This runs the creation step of your distribution, by running C<make> and C<make 
 the database to see if a C<pass> grade has already been reported for this distribution, if so then C<skiptest> is set and the testsuite 
 will not be run.
 
-If C<$dist->status->_skipbuild> is set to true, CPANPLUS::Dist::YACSmoke will skip the build and test stages completely and resolve
+If C<$dist-E<gt>status-E<gt>_skipbuild> is set to true, CPANPLUS::Dist::YACSmoke will skip the build and test stages completely and resolve
 any prereqs for the distribution before adding the build directories C<blib> structure to the include path.
 
 =back
