@@ -20,7 +20,7 @@ use YAML::Tiny;
 
 use vars qw($VERSION);
 
-$VERSION = '0.30';
+$VERSION = '0.31_01';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -245,10 +245,10 @@ my %throw_away;
 	my $create = $self->status->_create;
 	$dist_cpan->status->$_( $create->{$_} ) for keys %{ $create };
 	$dist_cpan->_resolve_prereqs(
-                            format          => $create->{_create_args}->{prereq_format},
+                            format          => $create->{_create_args}->{prereq_format} || '',
                             verbose         => $create->{_create_args}->{verbose},
                             prereqs         => $self->status->_prereqs,
-                            target          => $create->{_create_args}->{prereq_target},
+                            target          => $create->{_create_args}->{prereq_target} || '',
                             force           => $create->{_create_args}->{force},
                             prereq_build    => $create->{_create_args}->{prereq_build},
                     );

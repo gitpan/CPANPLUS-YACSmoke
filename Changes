@@ -1,6 +1,11 @@
 CPANPLUS::YACSmoke
 ==================
 
+0.31_01	Tue Feb 10 12:59:20 GMT 2009
+	- Added extra ENV var 'PERL_EXTUTILS_AUTOINSTALL'
+	- Tweaks to Dist::YACSmoke to hopefully fix an issue
+	  for Dan Collins.
+
 0.30	Tue Jan  6 16:05:15 GMT 2009
 	- Added detection of PERL5_MINISMOKEBOX env var
 
