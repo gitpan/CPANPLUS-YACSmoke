@@ -13,14 +13,15 @@ requires 'Test::Reporter' => 1.4002;
 requires 'version'  => '0.73';
 requires 'CPANPLUS' => 0.84;
 requires 'Module::Load::Conditional' => 0;
+requires 'Params::Check' => 0;
 requires 'SDBM_File' => 0;
 requires 'File::Spec' => 0;
 requires 'Regexp::Assemble' => 0.34;
 requires 'Config::IniFiles' => 2.38;
 requires 'Sort::Versions' => 0;
-eval "require Module::Build";
-unless ($@) {
-   requires 'Module::Build' => 0.30;
-   requires 'CPANPLUS::Dist::Build' => 0.05;
+if ( can_use('Module::Build') ) {
+   requires 'Module::Build' => 0.32;
+   requires 'CPANPLUS::Dist::Build' => 0.14;
 }
+makemaker_args(dist => { PREOP => "git log --name-status --tags > ./Changes.git" });
 WriteAll();

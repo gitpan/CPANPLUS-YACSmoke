@@ -5,7 +5,7 @@ author:
 build_requires:
   Test::More: 0.47
 distribution_type: module
-generated_by: 'Module::Install version 0.79'
+generated_by: 'Module::Install version 0.80'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,11 +17,12 @@ no_index:
     - t
 requires:
   CPANPLUS: 0.84
-  CPANPLUS::Dist::Build: 0.05
+  CPANPLUS::Dist::Build: 0.14
   Config::IniFiles: 2.38
   File::Spec: 0
-  Module::Build: 0.3
+  Module::Build: 0.32
   Module::Load::Conditional: 0
+  Params::Check: 0
   Regexp::Assemble: 0.34
   SDBM_File: 0
   Sort::Versions: 0
@@ -31,4 +32,4 @@ requires:
   version: 0.73
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.31_01
+version: 0.32

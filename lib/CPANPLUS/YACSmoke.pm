@@ -34,7 +34,7 @@ our %EXPORT_TAGS = (
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT    = ( @{ $EXPORT_TAGS{'default'} } );
 
-$VERSION = '0.31_01';
+$VERSION = '0.32';
 
 {
   my %Checked;
@@ -63,7 +63,6 @@ sub new {
   $ENV{AUTOMATED_TESTING} = 1;
   $ENV{PERL_MM_USE_DEFAULT} = 1; # despite verbose setting
   $ENV{PERL5_CPANPLUS_VERBOSE} = 1; # set verbosity of CPANPLUS
-  $ENV{PERL_EXTUTILS_AUTOINSTALL} = '--defaultdeps'; # From CPAN::Reporter::Smoker
 
   my $conf = CPANPLUS::Configure->new();
 
@@ -168,9 +167,8 @@ sub mark {
   my $grade   = lc shift || '';
 
   if ($grade) {
-    if ( my $mod = $self->{cpanplus}->parse_module( module => $distver ) ) {
-       $distver = $mod->package_name .'-'. $mod->package_version;
-    }
+    my $mod = $self->{cpanplus}->parse_module( module => $distver );
+    return error(qq{Invalid distribution "$distver"}) unless $mod;
     
     unless ($grade =~ /(pass|fail|unknown|na|none|ungraded|aborted|ignored)/) {
       return error("Invalid grade: '$grade'");
@@ -179,18 +177,15 @@ sub mark {
       $grade = undef;
     }
 
+    $distver = $mod->package_name .'-'. $mod->package_version;
     $self->{checked}->{$distver} = $grade;
   }
   else {
     my @distros = ($distver ? ($distver) : $self->_download_list());
     foreach my $dist ( @distros ) {
-       my $dist_ver; 
-       if ( my $mod = $self->{cpanplus}->parse_module( module => $dist ) ) {
-          $dist_ver = $mod->package_name .'-'. $mod->package_version;
-       }
-       else {
-	  $dist_ver = $dist;
-       }
+       my $mod = $self->{cpanplus}->parse_module( module => $dist );
+       next unless $mod;
+       my $dist_ver = $mod->package_name .'-'. $mod->package_version;
        next if $self->_is_excluded_dist( $dist_ver );
        $grade = $self->{checked}->{$dist_ver};
        if ( $grade ) {
