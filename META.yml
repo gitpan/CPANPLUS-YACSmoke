@@ -4,8 +4,10 @@ author:
   - 'Chris Williams <chris@bingosnet.co.uk>'
 build_requires:
   Test::More: 0.47
+configure_requires:
+  ExtUtils::MakeMaker: 6.50
 distribution_type: module
-generated_by: 'Module::Install version 0.80'
+generated_by: 'Module::Install version 0.81'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -16,7 +18,7 @@ no_index:
     - inc
     - t
 requires:
-  CPANPLUS: 0.84
+  CPANPLUS: 0.85_07
   CPANPLUS::Dist::Build: 0.14
   Config::IniFiles: 2.38
   File::Spec: 0
@@ -32,4 +34,5 @@ requires:
   version: 0.73
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.32
+  repository: git://github.com/bingos/cpanplus-yacsmoke.git
+version: 0.33_01
