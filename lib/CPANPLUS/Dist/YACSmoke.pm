@@ -20,7 +20,7 @@ use Config::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.40';
+$VERSION = '0.42';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -64,7 +64,7 @@ my %throw_away;
     $TiedObj = tie( %Checked, 'SDBM_File', $filename, O_CREAT|O_RDWR, 0644 )
 	or error(qq{Failed to open "$filename": $!});
 
-    my $config_file = catfile( $conf->get_conf('base'), '.cpanplus', CONFIG_FILE );
+    my $config_file = catfile( $conf->get_conf('base'), CONFIG_FILE );
     if ( -r $config_file ) {
        my $cfg = Config::IniFiles->new(-file => $config_file);
        my @list = $cfg->val( 'CONFIG', 'exclude_dists' );
