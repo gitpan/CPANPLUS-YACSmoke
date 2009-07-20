@@ -7,6 +7,7 @@ use Carp;
 use CPANPLUS::Backend;
 use CPANPLUS::Configure;
 use CPANPLUS::Error;
+use CPANPLUS::Internals::Constants;
 use POSIX qw( O_CREAT O_RDWR O_RDONLY );         # for SDBM_File
 use SDBM_File;
 use File::Fetch;
@@ -34,7 +35,7 @@ our %EXPORT_TAGS = (
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT    = ( @{ $EXPORT_TAGS{'default'} } );
 
-$VERSION = '0.42';
+$VERSION = '0.43_01';
 
 {
   my %Checked;
@@ -59,16 +60,18 @@ sub _disconnect_db {
 
 sub new {
   my $package = shift;
+  my $nconf = shift if ref $_[0] and $_[0]->isa('CPANPLUS::Configure');
 
   $ENV{AUTOMATED_TESTING} = 1;
   $ENV{PERL_MM_USE_DEFAULT} = 1; # despite verbose setting
 
-  my $conf = CPANPLUS::Configure->new();
+  my $conf = $nconf || CPANPLUS::Configure->new();
 
   # Override configure settings
   $conf->set_conf( prereqs => 2 ); # force to ask callback
   $conf->set_conf( skiptest => 0 ); 
-  $conf->set_conf( no_update => 1 ); # Don't reindex during smoking
+  $conf->set_conf( no_update => 1 )
+    if glob( catfile( $conf->get_conf('base'), $conf->_get_source('stored') .'*'. STORABLE_EXT, ) );
   $conf->set_conf( dist_type => 'CPANPLUS::Dist::YACSmoke' ); # this is where the magic happens.
   $conf->set_conf( cpantest => 'dont_cc' ); # Yes, we want to report test results. But not CC
   $conf->set_conf( verbose => 1 ); # set verbosity to true.
