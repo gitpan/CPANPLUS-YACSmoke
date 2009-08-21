@@ -21,13 +21,13 @@ no_index:
 provides:
   CPANPLUS::Config::YACSmoke:
     file: lib/CPANPLUS/Config/YACSmoke.pm
-    version: 0.43_02
+    version: 0.43_03
   CPANPLUS::Dist::YACSmoke:
     file: lib/CPANPLUS/Dist/YACSmoke.pm
-    version: 0.43_02
+    version: 0.43_03
   CPANPLUS::YACSmoke:
     file: lib/CPANPLUS/YACSmoke.pm
-    version: 0.43_02
+    version: 0.43_03
 requires:
   CPANPLUS: 0.88
   CPANPLUS::Dist::Build: 0.36
@@ -49,4 +49,4 @@ resources:
   homepage: http://github.com/bingos/cpanplus-yacsmoke/tree
   license: http://dev.perl.org/licenses/
   repository: git://github.com/bingos/cpanplus-yacsmoke.git
-version: 0.43_02
+version: 0.43_03
