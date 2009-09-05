@@ -1,3 +1,15 @@
+commit 70637c0dc62bf59fbdfd9c42dce4048e72597932
+Author: Chris Williams <chris@bingosnet.co.uk>
+Date:   Sat Sep 5 11:41:03 2009 +0100
+
+    Bump to a stable release
+
+M	Changes
+M	Changes.git
+M	lib/CPANPLUS/Config/YACSmoke.pm
+M	lib/CPANPLUS/Dist/YACSmoke.pm
+M	lib/CPANPLUS/YACSmoke.pm
+
 commit 615a2226a1ab7dd2124dd820097f48ec36cc08a2
 Author: Chris Williams <chris@bingosnet.co.uk>
 Date:   Tue Aug 25 18:15:22 2009 +0100
