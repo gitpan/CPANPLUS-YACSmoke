@@ -15,12 +15,12 @@ use POSIX qw( O_CREAT O_RDWR );         # for SDBM_File
 use version;
 use SDBM_File;
 use File::Spec::Functions;
-use Regexp::Assemble;
-use Config::IniFiles;
+use CPANPLUS::YACSmoke::ReAssemble;
+use CPANPLUS::YACSmoke::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.58';
+$VERSION = '0.60';
 
 use constant DATABASE_FILE => 'cpansmoke.dat';
 use constant CONFIG_FILE   => 'cpansmoke.ini';
@@ -66,10 +66,10 @@ my %throw_away;
 
     my $config_file = catfile( $conf->get_conf('base'), CONFIG_FILE );
     if ( -r $config_file ) {
-       my $cfg = Config::IniFiles->new(-file => $config_file);
+       my $cfg = CPANPLUS::YACSmoke::IniFiles->new(-file => $config_file);
        my @list = $cfg->val( 'CONFIG', 'exclude_dists' );
        if ( @list ) {
-          $exclude_dists = Regexp::Assemble->new();
+          $exclude_dists = CPANPLUS::YACSmoke::ReAssemble->new();
           $exclude_dists->add( @list );
        }
     }
