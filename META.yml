@@ -22,22 +22,22 @@ no_index:
 provides:
   CPANPLUS::Config::YACSmoke:
     file: lib/CPANPLUS/Config/YACSmoke.pm
-    version: 0.60
+    version: 0.62
   CPANPLUS::Dist::YACSmoke:
     file: lib/CPANPLUS/Dist/YACSmoke.pm
-    version: 0.60
+    version: 0.62
   CPANPLUS::YACSmoke:
     file: lib/CPANPLUS/YACSmoke.pm
-    version: 0.60
+    version: 0.62
   CPANPLUS::YACSmoke::IniFiles:
     file: lib/CPANPLUS/YACSmoke/IniFiles.pm
-    version: 0.60
+    version: 0.62
   CPANPLUS::YACSmoke::ReAssemble:
     file: lib/CPANPLUS/YACSmoke/ReAssemble.pm
-    version: 0.60
+    version: 0.62
   CPANPLUS::YACSmoke::SortVers:
     file: lib/CPANPLUS/YACSmoke/SortVers.pm
-    version: 0.60
+    version: 0.62
 requires:
   CPANPLUS: 0.88
   CPANPLUS::Dist::Build: 0.38
@@ -56,4 +56,4 @@ resources:
   homepage: http://github.com/bingos/cpanplus-yacsmoke/tree
   license: http://dev.perl.org/licenses/
   repository: git://github.com/bingos/cpanplus-yacsmoke.git
-version: 0.60
+version: 0.62

@@ -6,7 +6,7 @@
 package CPANPLUS::YACSmoke::ReAssemble;
 
 use vars qw/$VERSION $have_Storable $Current_Lexer $Default_Lexer $Single_Char $Always_Fail/;
-$VERSION = '0.60';
+$VERSION = '0.62';
 
 =head1 NAME
 
@@ -2488,7 +2488,7 @@ sub _do_reduce {
     my ($path, $ctx) = @_;
     my $indent = ' ' x $ctx->{depth};
     my $debug  =       $ctx->{debug};
-    my $ra = Regexp::Assemble->new(chomp=>0);
+    my $ra = CPANPLUS::YACSmoke::ReAssemble->new(chomp=>0);
     $ra->debug($debug);
     $debug and print "# $indent| do @{[_dump($path)]}\n";
     $ra->_insertr( $_ ) for
