@@ -1,4 +1,28 @@
 ==============================
+2011-06-23 20:00:40 +0100 0.64
+==============================
+
+  commit 5e33df95c1ef4e20744238e60da9d3f8b6987f15
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Thu Jun 23 20:00:40 2011 +0100
+  
+    Resolve [RT # 68751] by adopting URI construction from CPANPLUS
+
+    Update dependencies as well.
+
+  commit 70b6da8e00401d888942a785072881f2e4de40e3
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Thu Jan 20 10:15:06 2011 +0000
+  
+    Update Changes
+
+  commit ae8000c019b6b91bd0c27e4989331de6d06e2989
+  Author: Apocalypse <perl@0ne.us>
+  Date:   Thu Jan 20 04:17:53 2011 +0800
+  
+    fix typo in flush POD 
+
+==============================
 2011-01-03 00:32:39 +0000 0.62
 ==============================
 
