@@ -3,13 +3,14 @@ abstract: 'Yet Another CPANPLUS Smoke Tester'
 author:
   - 'Chris Williams <chris@bingosnet.co.uk>'
 build_requires:
-  ExtUtils::MakeMaker: 6.42
+  ExtUtils::MakeMaker: 6.62
   Test::More: 0.47
 configure_requires:
   CPANPLUS: 0.88
-  ExtUtils::MakeMaker: 6.42
+  ExtUtils::MakeMaker: 6.62
 distribution_type: module
-generated_by: 'Module::Install version 1.01'
+dynamic_config: 1
+generated_by: 'Module::Install version 1.04'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -22,22 +23,22 @@ no_index:
 provides:
   CPANPLUS::Config::YACSmoke:
     file: lib/CPANPLUS/Config/YACSmoke.pm
-    version: 0.64
+    version: 0.66
   CPANPLUS::Dist::YACSmoke:
     file: lib/CPANPLUS/Dist/YACSmoke.pm
-    version: 0.64
+    version: 0.66
   CPANPLUS::YACSmoke:
     file: lib/CPANPLUS/YACSmoke.pm
-    version: 0.64
+    version: 0.66
   CPANPLUS::YACSmoke::IniFiles:
     file: lib/CPANPLUS/YACSmoke/IniFiles.pm
-    version: 0.64
+    version: 0.66
   CPANPLUS::YACSmoke::ReAssemble:
     file: lib/CPANPLUS/YACSmoke/ReAssemble.pm
-    version: 0.64
+    version: 0.66
   CPANPLUS::YACSmoke::SortVers:
     file: lib/CPANPLUS/YACSmoke/SortVers.pm
-    version: 0.64
+    version: 0.66
 requires:
   CPANPLUS: 0.9103
   CPANPLUS::Dist::Build: 0.54
@@ -53,10 +54,10 @@ requires:
   perl: 5.6.0
   version: 0.73
 resources:
-  homepage: http://github.com/bingos/cpanplus-yacsmoke/tree
+  homepage: https://github.com/bingos/cpanplus-yacsmoke/tree
   license: http://dev.perl.org/licenses/
   repository:
     type: git
     url: git://github.com/bingos/cpanplus-yacsmoke.git
-    web: http://github.com/bingos/cpanplus-yacsmoke/tree
-version: 0.64
+    web: https://github.com/bingos/cpanplus-yacsmoke/tree
+version: 0.66

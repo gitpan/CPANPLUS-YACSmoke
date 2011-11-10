@@ -1,4 +1,22 @@
 ==============================
+2011-11-10 16:18:26 +0000 0.66
+==============================
+
+  commit 1b608ccc7b863b9fa4516319c7c3f880ba7420c1
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Thu Nov 10 16:18:26 2011 +0000
+  
+    Bump version to 0.66
+
+  commit 41140e5f0e0427b9a1a0e99058faf0d648dbb487
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Thu Nov 10 16:14:24 2011 +0000
+  
+    Add additional information to PASS reports generated
+
+    This to resolve [RT #72263] reported by Andreas Koenig 
+
+==============================
 2011-06-23 20:00:40 +0100 0.64
 ==============================
 
