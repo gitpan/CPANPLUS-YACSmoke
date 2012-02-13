@@ -1,4 +1,14 @@
 ==============================
+2012-02-13 21:20:10 +0000 0.68
+==============================
+
+  commit a0a7394373a19bdc336b0b51d1f378f338a16da0
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Mon Feb 13 21:13:06 2012 +0000
+  
+    Work with enhancements to CPANPLUS for test reporting 
+
+==============================
 2011-11-10 16:18:26 +0000 0.66
 ==============================
 
