@@ -1,4 +1,14 @@
 ==============================
+2012-02-28 21:08:15 +0000 0.70
+==============================
+
+  commit 3dffe26314c7fe151c2e3269db347909ea92af60
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Tue Feb 28 21:08:15 2012 +0000
+  
+    Resolve issues with older versions of CPANPLUS::Dist::Build 
+
+==============================
 2012-02-13 21:20:10 +0000 0.68
 ==============================
 
