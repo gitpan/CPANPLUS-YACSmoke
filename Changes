@@ -1,4 +1,14 @@
 ==============================
+2012-04-02 18:58:32 +0100 0.74
+==============================
+
+  commit fd47e2561415efa907c0e79ece5bb004df037d6c
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Mon Apr 2 18:58:32 2012 +0100
+  
+    Update required versions of CPANPLUS and CPANPLUS::Dist::Build 
+
+==============================
 2012-04-01 22:11:30 +0100 0.72
 ==============================
 

@@ -23,25 +23,25 @@ no_index:
 provides:
   CPANPLUS::Config::YACSmoke:
     file: lib/CPANPLUS/Config/YACSmoke.pm
-    version: 0.72
+    version: 0.74
   CPANPLUS::Dist::YACSmoke:
     file: lib/CPANPLUS/Dist/YACSmoke.pm
-    version: 0.72
+    version: 0.74
   CPANPLUS::YACSmoke:
     file: lib/CPANPLUS/YACSmoke.pm
-    version: 0.72
+    version: 0.74
   CPANPLUS::YACSmoke::IniFiles:
     file: lib/CPANPLUS/YACSmoke/IniFiles.pm
-    version: 0.72
+    version: 0.74
   CPANPLUS::YACSmoke::ReAssemble:
     file: lib/CPANPLUS/YACSmoke/ReAssemble.pm
-    version: 0.72
+    version: 0.74
   CPANPLUS::YACSmoke::SortVers:
     file: lib/CPANPLUS/YACSmoke/SortVers.pm
-    version: 0.72
+    version: 0.74
 requires:
-  CPANPLUS: 0.9103
-  CPANPLUS::Dist::Build: 0.54
+  CPANPLUS: 0.9123
+  CPANPLUS::Dist::Build: 0.62
   ExtUtils::CBuilder: 0
   ExtUtils::ParseXS: 0
   File::Spec: 0
@@ -60,4 +60,4 @@ resources:
     type: git
     url: git://github.com/bingos/cpanplus-yacsmoke.git
     web: https://github.com/bingos/cpanplus-yacsmoke/tree
-version: 0.72
+version: 0.74
