@@ -1,4 +1,20 @@
 ==============================
+2012-04-10 22:48:46 +0100 0.76
+==============================
+
+  commit 7fc7d95f209c507aab07f991f39c0ec4bafb1355
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Tue Apr 10 22:48:46 2012 +0100
+  
+    Rework the NA detail tests dist to test for a different NA condition
+
+  commit 6b8f34b5dfb70d9709abee516f3c347b0004709f
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Tue Apr 10 22:17:21 2012 +0100
+  
+    Don't allow unknown prereqs 
+
+==============================
 2012-04-02 18:58:32 +0100 0.74
 ==============================
 
