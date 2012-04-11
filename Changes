@@ -1,4 +1,14 @@
 ==============================
+2012-04-11 21:57:09 +0100 0.78
+==============================
+
+  commit e5fd3d02e47171dec252bfd700467c3a1b3c4dd4
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Wed Apr 11 21:57:09 2012 +0100
+  
+    Adjust the NA test dist to specify an older core module 
+
+==============================
 2012-04-10 22:48:46 +0100 0.76
 ==============================
 
