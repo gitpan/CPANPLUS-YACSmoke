@@ -1,4 +1,14 @@
 ==============================
+2012-04-26 22:20:35 +0100 0.80
+==============================
+
+  commit 8d758069cda704e150e3d8dccac2ddbc2d347b53
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Thu Apr 26 22:20:35 2012 +0100
+  
+    Also report whether RELEASE_TESTING is set or not 
+
+==============================
 2012-04-11 21:57:09 +0100 0.78
 ==============================
 
