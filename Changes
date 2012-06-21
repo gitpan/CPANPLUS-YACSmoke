@@ -1,4 +1,20 @@
 ==============================
+2012-06-22 00:33:55 +0100 0.82
+==============================
+
+  commit 670df9e5bcddf2f3ad1fec008da2bacde8697b70
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Fri Jun 22 00:33:55 2012 +0100
+  
+    Fix NA test for 'new' blead
+
+  commit 5daf3f1ddb8d1a18f9e5bc237e566353f73ab8cb
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Thu Jun 21 23:46:43 2012 +0100
+  
+    Fix encodings in POD 
+
+==============================
 2012-04-26 22:20:35 +0100 0.80
 ==============================
 

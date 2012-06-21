@@ -2,7 +2,7 @@ package CPANPLUS::YACSmoke::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.80';
+$VERSION = '0.82';
 
 require 5.004;
 use strict;
@@ -2191,7 +2191,7 @@ use strict;
 use Carp;
 use vars qw( $VERSION );
 
-$CPANPLUS::YACSmoke::IniFiles::_section::VERSION = 0.80;
+$CPANPLUS::YACSmoke::IniFiles::_section::VERSION = 0.82;
 
 # ----------------------------------------------------------
 # Sub: Config::IniFiles::_section::TIEHASH
@@ -2531,7 +2531,7 @@ In particular, special thanks go to (in roughly chronological order):
 Bernie Cosell, Alan Young, Alex Satrapa, Mike Blazer, Wilbert van de Pieterman,
 Steve Campbell, Robert Konigsberg, Scott Dellinger, R. Bernstein,
 Daniel Winkelmann, Pires Claudio, Adrian Phillips, 
-Marek Rouchal, Luc St Louis, Adam Fischler, Kay Röpke, Matt Wilson, 
+Marek Rouchal, Luc St Louis, Adam Fischler, Kay Rpke, Matt Wilson, 
 Raviraj Murdeshwar and Slaven Rezic, Florian Pfaff
 
 Geez, that's a lot of people. And apologies to the folks who were missed.
