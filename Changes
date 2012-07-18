@@ -1,4 +1,18 @@
 ==============================
+2012-07-18 18:37:39 +0100 0.84
+==============================
+
+  commit 830f89a2a1039a2815d421c41ca310cc29b303d6
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Wed Jul 18 18:34:55 2012 +0100
+  
+    Ensure that skiptest => 1 isn't unintentionally propagated to
+    prereqs.
+
+    This will fix an observed edge-case that can never be reproduced in a
+    lab environment. 
+
+==============================
 2012-06-22 00:33:55 +0100 0.82
 ==============================
 
