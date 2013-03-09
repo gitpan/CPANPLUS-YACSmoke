@@ -7,7 +7,7 @@ use Cwd;
 use base qw(Module::Install::Base);
 use vars qw($VERSION);
 
-$VERSION = '0.16';
+$VERSION = '0.22';
 
 sub githubmeta {
   my $self = shift;
@@ -21,13 +21,7 @@ sub githubmeta {
   $git_url =~ s![\w\-]+\@([^:]+):!git://$1/!;
   $http_url =~ s![\w\-]+\@([^:]+):!https://$1/!;
   $http_url =~ s!\.git$!/tree!;
-  $self->repository(
-      {
-          type => 'git',
-          url  => $git_url,
-          web  => $http_url,
-      },
-  );
+  $self->repository( $git_url );
   $self->homepage( $http_url ) unless $self->homepage();
   return 1;
 }
@@ -54,4 +48,4 @@ sub _under_git {
 'Github';
 __END__
 
-#line 117
+#line 111

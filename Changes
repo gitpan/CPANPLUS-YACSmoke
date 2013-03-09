@@ -1,4 +1,20 @@
 ==============================
+2013-03-09 12:27:19 +0000 0.86
+==============================
+
+  commit 61a88908bda0396825cfe79899cd4061f9c972fe
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Sat Mar 9 12:27:19 2013 +0000
+  
+    Fix the pod errors in ReAssemble
+
+  commit fb87c5a2bb2bd8b90365c53e2ad45c570aaf1cec
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Sat Mar 9 12:21:37 2013 +0000
+  
+    Skip the pod tests when running under CPAN smokers 
+
+==============================
 2012-07-18 18:37:39 +0100 0.84
 ==============================
 
