@@ -1,4 +1,34 @@
 ==============================
+2013-06-14 13:48:58 +0100 0.88
+==============================
+
+  commit 5f4f6431e88d3831b67703200e936fbcb72ab151
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Fri Jun 14 13:48:58 2013 +0100
+  
+    Fix POD errors in CPANPLUS::YACSmoke::IniFiles
+
+  commit e675f647817384029a5f47411edc1f6ab00cdaf4
+  Author: Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
+  Date:   Fri Jun 14 13:27:40 2013 +0100
+  
+    Add NONINTERACTIVE_TESTING to CPANPLUS::YACSmoke
+
+    As per the Lancaster Consensus:
+
+    'The Lancaster Consensus from this year's QA hackathon has updated
+    the desired semantics:
+    http://www.dagolden.com/index.php/2098/the-annotated-lancaster-consen
+    sus/
+
+    Specifically, AUTOMATED_TESTING is now intended to distinguish only
+    between things running for "smoke testing" versus things running as
+    part of module installation (or other, manually testing). It no
+    longer means "without recourse to a human operator" as it did after
+    the Oslo Consensus. That aspect is now covered by the new
+    "NONINTERACTIVE_TESTING" environment variable.' -xdg 
+
+==============================
 2013-03-09 12:27:19 +0000 0.86
 ==============================
 

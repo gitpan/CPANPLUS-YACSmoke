@@ -2,7 +2,7 @@ package CPANPLUS::YACSmoke::IniFiles;
 
 use vars qw($VERSION);
 
-$VERSION = '0.86';
+$VERSION = '0.88';
 
 require 5.004;
 use strict;
@@ -246,7 +246,7 @@ syntax.
 
 =item I<-allowempty> 0|1
 
-If set to 1, then empty files are allowed at L</ReadConfig|ReadConfig()> 
+If set to 1, then empty files are allowed at L<ReadConfig|ReadConfig()> 
 time. If set to 0 (the default), an empty configuration file is considered 
 an error.
 
@@ -267,7 +267,7 @@ or
 If set to 0 (the default if not importing), these comments are treated
 like ordinary ones.
 
-The L</WriteConfig|WriteConfig(-delta=>1)> form will output such
+The L<WriteConfig|WriteConfig(-delta=>1)> form will output such
 comments to indicate deleted sections or parameters. This way,
 reloading a delta file using the same imported object produces the
 same results in memory again. See L<IMPORT / DELTA FEATURES> for more
@@ -2191,7 +2191,7 @@ use strict;
 use Carp;
 use vars qw( $VERSION );
 
-$CPANPLUS::YACSmoke::IniFiles::_section::VERSION = 0.86;
+$CPANPLUS::YACSmoke::IniFiles::_section::VERSION = 0.88;
 
 # ----------------------------------------------------------
 # Sub: Config::IniFiles::_section::TIEHASH
